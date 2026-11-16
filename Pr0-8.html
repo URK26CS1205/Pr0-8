@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Gallery</title>
+    <style>
+        /* 1 & 4. Base styles, Universal reset, & Core Optimization */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 2. Initial CSS Grid Layout (Desktop: 3 columns) */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Hover effect for desktop/pointer devices */
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 4. Image Sizing & Optimization */
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover; /* Keeps aspect ratio intact without distortion */
+            display: block;
+        }
+
+        .gallery-item p {
+            padding: 15px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        /* 3 & 6. Media Queries & Device-Specific Optimizations */
+
+        /* Tablets & Small Laptops (max-width: 1024px) -> 2 columns */
+        @media screen and (max-width: 1024px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .gallery-item img {
+                height: 200px; /* Adjusted scale for tablet aspect ratios */
+            }
+        }
+
+        /* Mobile Devices (max-width: 600px) -> 1 column */
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .gallery-item img {
+                height: 240px; /* Taller hero aspect ratio for vertical mobile screens */
+            }
+        }
+
+        /* 6. Device-Specific Touch & Accessibility Optimization */
+        @media (pointer: coarse) {
+            /* Removes hover translateY effect on touchscreens to prevent visual sticky states */
+            .gallery-item:hover {
+                transform: none;
+            }
+        }
+
+        /* Dark Mode Theme Preference */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #ffffff;
+            }
+
+            .gallery-item {
+                background-color: #1e1e1e;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            }
+
+            .gallery-item p {
+                color: #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Responsive Image Gallery</h1>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1015/600/400" alt="Mountain Landscape" loading="lazy">
+                <p>Image 1</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1016/600/400" alt="Canyon View" loading="lazy">
+                <p>Image 2</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1018/600/400" alt="Rocky Shore" loading="lazy">
+                <p>Image 3</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1025/600/400" alt="Pug in Blanket" loading="lazy">
+                <p>Image 4</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1035/600/400" alt="Waterfall Lake" loading="lazy">
+                <p>Image 5</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1040/600/400" alt="Forest Trail" loading="lazy">
+                <p>Image 6</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
